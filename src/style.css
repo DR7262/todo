@@ -1,8 +1,24 @@
+:root {
+    --main-font-color: midnightblue;
+    --main-bg-color: white;
+}
+
 body {
     margin: 0 auto;
 }
 
 .banner {
-    background-color: blanchedalmond;
-    width: 100%;
+    background-color: var(--main-bg-color);
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    box-sizing: border-box;
+    color: var(--main-font-color);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
 }
