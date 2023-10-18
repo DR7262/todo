@@ -1,13 +1,14 @@
 :root {
-    --main-font-color: midnightblue;
-    --main-bg-color: white;
+    --main-bg-color: midnightblue;
+    --secondary-bg-color: rgb(178, 191, 213);
+    --main-font-color: white;
 }
 
 body {
     margin: 0 auto;
 }
 
-.banner {
+.navbar {
     background-color: var(--main-bg-color);
     height: 10vh;
     display: flex;
@@ -18,7 +19,14 @@ body {
     color: var(--main-font-color);
 }
 
-.logo {
+#project-content {
+    background-color: var(--secondary-bg-color);
+    box-sizing: border-box;
+    padding: 10px;
+    height: 90vh;
+}
+
+.navbar-logo {
     font-weight: bold;
     font-size: 2rem;
 }
