@@ -1,9 +1,9 @@
 import './style.css';
 import project from './project.js'
+import renderProject from './domController';
 
 const test = new project('General');
 test.addTask('My Task');
-console.log(test.name);
-console.log(test.taskList[0].name);
+test.addTask('My Task 2');
 
-console.log('Test Successful!');
+renderProject(test, document.getElementById('project-content'));
