@@ -14,8 +14,8 @@ class project {
         this._name = value;
     }
 
-    addTask(taskName) {
-        let newTask = new task(taskName)
+    addTask(taskName, comments, dueDate, priority) {
+        let newTask = new task(taskName, comments, dueDate, priority)
         this.taskList.push(newTask);
     }
 }
