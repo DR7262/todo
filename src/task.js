@@ -14,12 +14,12 @@ class task {
         this._name = value;
     }
 
-    get comments() {
-        return this._comments;
+    get comment() {
+        return this._comment;
     }
 
-    set comments(value) {
-        this._comments = value;
+    set comment(value) {
+        this._comment = value;
     }
 
     get dueDate() {

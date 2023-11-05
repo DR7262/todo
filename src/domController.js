@@ -1,3 +1,5 @@
+import AirDatepicker from "air-datepicker";
+
 function renderProject(project, targetElement) {
     //Creating project title section
     const projectTitle = document.createElement('h1');
@@ -31,7 +33,7 @@ function renderTask(project, task, targetElement) {
     taskTitle.textContent = task.name;
     taskContainer.appendChild(taskTitle);
 
-    //add delete button element to task
+    //add delete button to task element
     let deleteTaskButton = document.createElement('button');
     deleteTaskButton.classList.add('delete-task');
     deleteTaskButton.textContent = 'X';
@@ -40,6 +42,23 @@ function renderTask(project, task, targetElement) {
         e.currentTarget.parentElement.remove();
     });
     taskContainer.appendChild(deleteTaskButton);
+
+    //add comments section to task element
+    let commentSection = document.createElement('div');
+    commentSection.classList.add('commentSection');
+    commentSection.textContent = 'Insert Comment Here';
+    taskContainer.appendChild(commentSection);
+    
+    //add date picker to task element
+    let datePicker = document.createElement('input');
+    datePicker.className = datePicker.value === '' ? 'empty-date-picker' : 'date-picker';
+    datePicker.setAttribute('type', 'date');
+    datePicker.addEventListener('input', e => {
+        datePicker.className = datePicker.value === '' ? 'empty-date-picker' : 'date-picker';
+    });
+    taskContainer.appendChild(datePicker);
+
+    //add priority indicator to task element
 
     //render task element to selected target
     targetElement.appendChild(taskContainer);
