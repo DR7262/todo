@@ -1,4 +1,4 @@
-import AirDatepicker from "air-datepicker";
+import edit from './edit.svg';
 
 function renderProject(project, targetElement) {
     //Creating project title section
@@ -28,10 +28,18 @@ function renderTask(project, task, targetElement) {
     taskContainer.classList.add('task');
     
     //add title to task element
+    let taskTitleContainer = document.createElement('div');
+    taskTitleContainer.classList.add('task-title-container');
     let taskTitle = document.createElement('div');
-    taskTitle.classList.add('task-title');
+    taskTitle.classList.add('task-title')
     taskTitle.textContent = task.name;
-    taskContainer.appendChild(taskTitle);
+    taskTitleContainer.appendChild(taskTitle)
+    let editTaskTitle = new Image();
+    editTaskTitle.classList.add('edit');
+    editTaskTitle.src = edit;
+    bindEditBtnToField(editTaskTitle, taskTitle);
+    taskTitleContainer.appendChild(editTaskTitle);
+    taskContainer.appendChild(taskTitleContainer);
 
     //add delete button to task element
     let deleteTaskButton = document.createElement('button');
@@ -45,8 +53,12 @@ function renderTask(project, task, targetElement) {
 
     //add comments section to task element
     let commentSection = document.createElement('div');
-    commentSection.classList.add('commentSection');
+    commentSection.classList.add('comment-section');
     commentSection.textContent = 'Insert Comment Here';
+    let editCommentSection = new Image();
+    editCommentSection.classList.add('edit');
+    editCommentSection.src = edit;
+    commentSection.appendChild(editCommentSection);
     taskContainer.appendChild(commentSection);
     
     //add date picker to task element
@@ -62,6 +74,13 @@ function renderTask(project, task, targetElement) {
 
     //render task element to selected target
     targetElement.appendChild(taskContainer);
+};
+
+function bindEditBtnToField(btn, textField) {
+    btn.addEventListener('click', () => {
+        textField.setAttribute('contenteditable', textField.getAttribute('contenteditable') != 'true' ? 'true' : 'false');
+        textField.focus();
+    });
 };
 
 export default renderProject;
