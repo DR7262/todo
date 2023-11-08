@@ -35,12 +35,29 @@ function renderTask(project, task, targetElement) {
     taskTitle.classList.add('task-title')
     taskTitle.textContent = task.name;
     taskTitleContainer.appendChild(taskTitle)
+    //add edit button for task title
     let editTaskTitle = new Image();
     editTaskTitle.classList.add('edit');
     editTaskTitle.src = edit;
     bindEditBtnToField(editTaskTitle, taskTitle);
     taskTitleContainer.appendChild(editTaskTitle);
     taskContainer.appendChild(taskTitleContainer);
+
+    //add priority button to task element
+    let priorityContainer = document.createElement('div');
+    priorityContainer.classList.add('priority-container');
+    priorityContainer.textContent = 'Priority: ';
+    let priorityButton = document.createElement('select');
+    priorityButton.classList.add('priority-button');
+    let priorityChoices = ['High', 'Medium', 'Low']
+    for (var i = 0; i < priorityChoices.length; i++) {
+        var option = document.createElement("option");
+        option.value = priorityChoices[i];
+        option.text = priorityChoices[i];
+        priorityButton.appendChild(option);
+    };
+    priorityContainer.appendChild(priorityButton);
+    
 
     //add delete button to task element
     let deleteTaskButton = document.createElement('button');
@@ -50,7 +67,14 @@ function renderTask(project, task, targetElement) {
         project.taskList = project.taskList.filter((item) => item != task);
         e.currentTarget.parentElement.remove();
     });
-    taskContainer.appendChild(deleteTaskButton);
+    
+
+    let buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    buttonContainer.appendChild(priorityContainer);
+    buttonContainer.appendChild(deleteTaskButton);
+    taskContainer.appendChild(buttonContainer);
+
 
     //add comments section to task element
     let commentSectionContainer = document.createElement('div');
@@ -59,6 +83,7 @@ function renderTask(project, task, targetElement) {
     commentSectionContent.classList.add('comment-section-content');
     commentSectionContent.textContent = 'Insert Comment Here';
     commentSectionContainer.appendChild(commentSectionContent);
+    //add edit button for comment content
     let editCommentSection = new Image();
     editCommentSection.classList.add('edit');
     editCommentSection.src = edit;
@@ -74,8 +99,6 @@ function renderTask(project, task, targetElement) {
         datePicker.className = datePicker.value === '' ? 'empty-date-picker' : 'date-picker';
     });
     taskContainer.appendChild(datePicker);
-
-    //add priority indicator to task element
 
     //render task element to selected target
     targetElement.appendChild(taskContainer);

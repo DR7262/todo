@@ -62,7 +62,7 @@ body {
 }
 
 .task-title-container {
-    width: calc(100% - 30px);
+    min-width: 50%;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -74,14 +74,13 @@ body {
 }
 
 .task-title[contenteditable='true'],
-.comment-section[contenteditable='true'] {
+.comment-section-content[contenteditable='true'] {
     font-weight: lighter;
     font-size: .9rem;
     padding: 2px;
     border: 1px dashed grey;
     border-radius: 8px;
 }
-
 
 .edit {
     scale: 60%;
@@ -96,6 +95,13 @@ body {
 
 .edit:active {
     scale: 60%;
+}
+
+.button-container {
+    box-sizing: border-box;
+    width: max-content;
+    display: flex;
+    gap: 15px;
 }
 
 .delete-task {
@@ -124,7 +130,7 @@ body {
     border-radius: 6px;
     padding: 2px;
     font-family: Arial, Helvetica, sans-serif;
-    width: 100px;
+    width: 120px;
     align-self: flex-end;
 }
 
