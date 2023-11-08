@@ -1,3 +1,4 @@
+import { CompassCalibration } from '@mui/icons-material';
 import edit from './edit.svg';
 
 function renderProject(project, targetElement) {
@@ -52,14 +53,18 @@ function renderTask(project, task, targetElement) {
     taskContainer.appendChild(deleteTaskButton);
 
     //add comments section to task element
-    let commentSection = document.createElement('div');
-    commentSection.classList.add('comment-section');
-    commentSection.textContent = 'Insert Comment Here';
+    let commentSectionContainer = document.createElement('div');
+    commentSectionContainer.classList.add('comment-section');
+    let commentSectionContent = document.createElement('div');
+    commentSectionContent.classList.add('comment-section-content');
+    commentSectionContent.textContent = 'Insert Comment Here';
+    commentSectionContainer.appendChild(commentSectionContent);
     let editCommentSection = new Image();
     editCommentSection.classList.add('edit');
     editCommentSection.src = edit;
-    commentSection.appendChild(editCommentSection);
-    taskContainer.appendChild(commentSection);
+    bindEditBtnToField(editCommentSection, commentSectionContent);
+    commentSectionContainer.appendChild(editCommentSection);
+    taskContainer.appendChild(commentSectionContainer);
     
     //add date picker to task element
     let datePicker = document.createElement('input');

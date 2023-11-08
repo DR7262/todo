@@ -65,15 +65,21 @@ body {
     width: calc(100% - 30px);
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .task-title {
     font-weight: 800;
+    box-sizing: border-box;
 }
 
-.task-title[contenteditable='true'] {
+.task-title[contenteditable='true'],
+.comment-section[contenteditable='true'] {
     font-weight: lighter;
+    font-size: .9rem;
     padding: 2px;
+    border: 1px dashed grey;
+    border-radius: 8px;
 }
 
 
